@@ -1,30 +1,29 @@
 module Helper exposing (..)
 
-import Html exposing (Html, div, li, text, ul)
 
+-- =====================================
+-- PARTE 1 - FUNCIONES BÁSICAS (Float)
+-- =====================================
 
-
--- PARTE 1 - FUNCIONES BÁSICAS
-
-
-add2 : Int -> Int -> Int
+add2 : Float -> Float -> Float
 add2 x y =
     x + y
 
 
-add3 : Int -> Int -> Int -> Int
+add3 : Float -> Float -> Float -> Float
 add3 x y z =
     x + y + z
 
 
-calc : Int -> Int -> (Int -> Int -> Int) -> Int
+calc : Float -> Float -> (Float -> Float -> Float) -> Float
 calc x y operation =
     operation x y
 
 
 
--- PARTE 2 - RECORD ProgrammingLanguage
-
+-- =====================================
+-- RECORD ProgrammingLanguage
+-- =====================================
 
 type alias ProgrammingLanguage =
     { name : String
@@ -46,8 +45,9 @@ languageNames langs =
 
 
 
--- PARTE 3 - RECORD User
-
+-- =====================================
+-- RECORD User
+-- =====================================
 
 type alias User =
     { name : String
@@ -75,6 +75,11 @@ onlyStudents userList =
         )
         userList
 
+
+
+-- =====================================
+-- RECORD Videogame
+-- =====================================
 
 type alias Videogame =
     { title : String
@@ -107,6 +112,11 @@ getVideogameGenres games =
     List.map .genres games
 
 
+
+-- =====================================
+-- RECORD Computer
+-- =====================================
+
 type alias Computer =
     { ram : String
     , model : String
@@ -122,17 +132,3 @@ myLaptop =
     , brand = "Apple"
     , screenSize = "14"
     }
-
-
-main : Html msg
-main =
-    div []
-        [ div []
-            [ ul []
-                [ li [] [ text ("Ram: " ++ .ram myLaptop) ]
-                , li [] [ text ("Modelo: " ++ .model myLaptop) ]
-                , li [] [ text ("Marca: " ++ .brand myLaptop) ]
-                , li [] [ text ("Pulgadas: " ++ .screenSize myLaptop) ]
-                ]
-            ]
-        ]
