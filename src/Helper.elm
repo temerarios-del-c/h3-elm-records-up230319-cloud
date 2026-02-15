@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Helper exposing (..)
 
 import Html exposing (Html, text)
 import String
