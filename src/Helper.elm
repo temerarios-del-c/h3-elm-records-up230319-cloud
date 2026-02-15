@@ -1,29 +1,43 @@
 module Helper exposing (..)
 
+import Html exposing (Html, div, h1, li, text, ul)
+
+
 
 -- =====================================
--- PARTE 1 - FUNCIONES BÁSICAS (Float)
+-- PART 1 - BASIC FUNCTIONS
 -- =====================================
+-- add2 : Int -> Int -> Int
 
-add2 : Float -> Float -> Float
-add2 x y =
-    x + y
+
+add2 : Int -> Int -> Int
+add2 int1 int2 =
+    int1 + int2
+
+
+
+-- add3 : Float -> Float -> Float -> Float
 
 
 add3 : Float -> Float -> Float -> Float
-add3 x y z =
-    x + y + z
+add3 int1 int2 int3 =
+    int1 + int2 + int3
 
 
-calc : Float -> Float -> (Float -> Float -> Float) -> Float
-calc x y operation =
-    operation x y
+
+-- calc : Int -> Int -> (Int -> Int -> Int) -> Int
+
+
+calc : Int -> Int -> (Int -> Int -> Int) -> Int
+calc int1 int2 operator =
+    operator int1 int2
 
 
 
 -- =====================================
--- RECORD ProgrammingLanguage
+-- RECORD 1 - ProgrammingLanguage
 -- =====================================
+
 
 type alias ProgrammingLanguage =
     { name : String
@@ -46,8 +60,9 @@ languageNames langs =
 
 
 -- =====================================
--- RECORD User
+-- RECORD 2 - User
 -- =====================================
+
 
 type alias User =
     { name : String
@@ -66,20 +81,20 @@ onlyStudents : List User -> List String
 onlyStudents userList =
     List.map
         (\user ->
-            case .uType user of
-                "Student" ->
-                    .name user
+            if user.uType == "Student" then
+                user.name
 
-                _ ->
-                    ""
+            else
+                ""
         )
         userList
 
 
 
 -- =====================================
--- RECORD Videogame
+-- ALIAS 3 - Videogame
 -- =====================================
+
 
 type alias Videogame =
     { title : String
@@ -114,8 +129,9 @@ getVideogameGenres games =
 
 
 -- =====================================
--- RECORD Computer
+-- HTML EXERCISE
 -- =====================================
+
 
 type alias Computer =
     { ram : String
@@ -132,3 +148,18 @@ myLaptop =
     , brand = "Apple"
     , screenSize = "14"
     }
+
+
+main : Html msg
+main =
+    div []
+        [ h1 [] [ text "My laptop" ]
+        , div []
+            [ ul []
+                [ li [] [ text ("Ram: " ++ myLaptop.ram) ]
+                , li [] [ text ("Modelo: " ++ myLaptop.model) ]
+                , li [] [ text ("Marca: " ++ myLaptop.brand) ]
+                , li [] [ text ("Pulgadas: " ++ myLaptop.screenSize) ]
+                ]
+            ]
+        ]
