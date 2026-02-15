@@ -1,4 +1,12 @@
-module Main exposing (..)
+module Main exposing (main)
+
+import Html exposing (Html, text)
+import String
+
+
+
+-- EJERCICIO 1
+
 
 type alias ProgrammingLanguage =
     { name : String
@@ -6,24 +14,21 @@ type alias ProgrammingLanguage =
     , currentVersion : String
     }
 
+
 languages : List ProgrammingLanguage
 languages =
     [ { name = "elm", releaseYear = 2012, currentVersion = "0.19.1" }
     , { name = "javascript", releaseYear = 1995, currentVersion = "ECMAScript 2025" }
     ]
 
+
 languageNames : List ProgrammingLanguage -> List String
 languageNames langs =
     List.map .name langs
 
 
-result : List String
-result =
-    languageNames languages
 
-
-import Html exposing (Html, text)
-import String
+-- EJERCICIO 2
 
 
 type alias User =
@@ -53,9 +58,9 @@ onlyStudents userList =
         userList
 
 
-main : Html msg
-main =
-    text (String.join ", " (onlyStudents users))
+
+-- EJERCICIO 3
+
 
 type alias Videogame =
     { title : String
@@ -64,6 +69,8 @@ type alias Videogame =
     , downloads : Int
     , genres : List String
     }
+
+
 videogames : List Videogame
 videogames =
     [ { title = "Control"
@@ -79,8 +86,13 @@ videogames =
       , genres = [ "Action", "Adventure" ]
       }
     ]
+
+
 getVideogameGenres : List Videogame -> List (List String)
 getVideogameGenres games =
     List.map .genres games
-result =
-    getVideogameGenres videogames
+
+
+main : Html msg
+main =
+    text (String.join ", " (onlyStudents users))
